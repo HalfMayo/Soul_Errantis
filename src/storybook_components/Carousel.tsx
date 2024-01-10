@@ -11,6 +11,8 @@ import PreviousElement from "../assets/svgs/left-chevron-svgrepo-com.svg?react";
 import NextElement from "../assets/svgs/right-chevron-svgrepo-com.svg?react";
 import CardImage from "./CardImage";
 
+//TODO: aumentare ampiezza carousel e modificare il comportamento (list.length/2)
+
 interface Carousel {
   elements: CardProps[] | ImageProps[] | AltImageProps[];
   alternative?: boolean;
@@ -22,7 +24,7 @@ export default function Carousel({ elements, alternative }: Carousel) {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const [disabledButtons, setDisabledButtons] = useState(false);
-  const wrapperRef: any = useRef(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   function isCard(el: CardProps | ImageProps | AltImageProps): el is CardProps {
     return (el as CardProps).headline !== undefined;
@@ -107,7 +109,7 @@ export default function Carousel({ elements, alternative }: Carousel) {
   }
 
   useEffect(() => {
-    wrapperRef.current.addEventListener("transitionstart", () => {
+    wrapperRef.current!.addEventListener("transitionstart", () => {
       setDisabledButtons(true);
     });
   }, []);

@@ -32,8 +32,8 @@ const team = [{
         description: "Adventurer armed only with a keyboard on a coding mission to turn bugs into features. My childhood heroes? A yellow electric mouse and a boy dressed in green randomly enter people's homes and destroy everything."
     },{
         img: avatar,
-        altText: "Owain-chibi-avatar",
-        headline: "Owain",
+        altText: "Hyper-chibi-avatar",
+        headline: "Hyper",
         subhead: "Lead 3D Modeler | Texture artist | Animator | Organic modeler",
         description: "I started playing videogames in 1998, and I still love it! Good background music is necessary for me in order to concentrate! My main skills are programming and joking in inappropriate moments. Here, 'To Make Good'"
     }
