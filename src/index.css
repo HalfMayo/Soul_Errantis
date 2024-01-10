@@ -4,7 +4,7 @@
 
 @layer components {
     body {
-        background-image: url("C:/Users/barba/Desktop/Soul_Errantis/src/assets/images/BG_blue.png");
+        background-image: url("./assets/images/BG_blue.png");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
