@@ -8,7 +8,7 @@ export default function Card({
   description,
 }: CardProps) {
   return (
-    <div className="h-[600px] mx-[1vw] rounded-xl border-white border-2 flex items-center justify-center text-center lg:w-[23vw] w-[48vw]">
+    <div className="h-[600px] mx-[1vw] rounded-xl border-white border-2 flex items-center justify-center text-center lg:w-[23vw] sm:w-[48vw] w-[83vw]">
       <div className="w-full h-[85%] flex flex-col items-center">
         {img ? (
           <img

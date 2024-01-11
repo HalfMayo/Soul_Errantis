@@ -24,8 +24,6 @@ export default function Carousel({
 }: Carousel) {
   const prevEls = [];
   const nextEls = [];
-  const width = window.innerWidth;
-  const height = window.innerHeight;
   const [currentSlide, setCurrentSlide] = useState(1);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const [disabledButtons, setDisabledButtons] = useState(false);
@@ -140,13 +138,14 @@ export default function Carousel({
     <div className="relative flex items-center gap-4">
       <SvgButton
         label="Previous Card"
-        width={width < 540 && height > 840 ? "32px" : "48px"}
-        height={width < 540 && height > 840 ? "32px" : "48px"}
+        width={window.innerWidth < 640 ? "32px" : "48px"}
+        height={window.innerWidth < 640 ? "32px" : "48px"}
         svg={PreviousElement}
         onClick={handlePrevious}
+        className="sm:static absolute left-[50%] translate-x-[-85%] top-[100%]"
       />
       {/* per visualizzare una card alla volta: ul w-[26.5rem] */}
-      <ul className="list-none w-[50vw] overflow-hidden p-0 pb-3">
+      <ul className="list-none w-[85vw] sm:w-[50vw] overflow-hidden p-0 pb-3">
         <div
           className={`flex items-center m-0 p-0 ${
             transitionEnabled ? "transition duration-1000" : ""
@@ -171,8 +170,9 @@ export default function Carousel({
         label="Next Card"
         svg={NextElement}
         onClick={handleNext}
-        width={width < 540 && height > 840 ? "32px" : "48px"}
-        height={width < 540 && height > 840 ? "32px" : "48px"}
+        width={window.innerWidth < 640 ? "32px" : "48px"}
+        height={window.innerWidth < 640 ? "32px" : "48px"}
+        className="sm:static absolute right-[50%] translate-x-[85%] top-[100%]"
       />
     </div>
   );
