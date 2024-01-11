@@ -6,9 +6,9 @@ import illOne from "../../assets/images/chibiscene.png";
 const Story = forwardRef((_, ref: ForwardedRef<HTMLElement | null>) => {
   return (
     <Section id="story" ref={ref}>
-      <div className="flex flex-col items-center justify-center w-2/4 gap-6">
+      <div className="flex flex-col items-center justify-center sm:w-2/4 w-[90%] gap-6">
         <SectionTitle title="A journey starts here" />
-        <p className="text-center">
+        <p className="text-center sm:w-full w-[85%]">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras volutpat
           fringilla diam eget dictum. Aliquam auctor, sem porttitor ultricies
           convallis, arcu dolor posuere turpis, non cursus dui ligula ut quam.

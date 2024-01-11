@@ -14,15 +14,20 @@ import CardImage from "./CardImage";
 interface Carousel {
   elements: CardProps[] | ImageProps[] | AltImageProps[];
   alternative?: boolean;
+  cardNum?: number;
 }
 
-export default function Carousel({ elements, alternative }: Carousel) {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
+export default function Carousel({
+  elements,
+  alternative,
+  cardNum = 2,
+}: Carousel) {
+  const prevEls = [];
+  const nextEls = [];
   const [currentSlide, setCurrentSlide] = useState(1);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const [disabledButtons, setDisabledButtons] = useState(false);
-  const wrapperRef: any = useRef(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   function isCard(el: CardProps | ImageProps | AltImageProps): el is CardProps {
     return (el as CardProps).headline !== undefined;
@@ -80,6 +85,14 @@ export default function Carousel({ elements, alternative }: Carousel) {
     }
   });
 
+  for (let i = 1; i <= list.length % cardNum; i++) {
+    prevEls.push(list[list.length - 1]);
+  }
+
+  for (let i = 0; i <= cardNum; i++) {
+    nextEls.push(list[i]);
+  }
+
   function handleNext() {
     if (!disabledButtons) {
       setCurrentSlide((prev) => prev + 1);
@@ -107,7 +120,7 @@ export default function Carousel({ elements, alternative }: Carousel) {
   }
 
   useEffect(() => {
-    wrapperRef.current.addEventListener("transitionstart", () => {
+    wrapperRef.current!.addEventListener("transitionstart", () => {
       setDisabledButtons(true);
     });
   }, []);
@@ -125,23 +138,31 @@ export default function Carousel({ elements, alternative }: Carousel) {
     <div className="relative flex items-center gap-4">
       <SvgButton
         label="Previous Card"
-        width={width < 540 && height > 840 ? "32px" : "48px"}
-        height={width < 540 && height > 840 ? "32px" : "48px"}
+        width={window.innerWidth < 640 ? "32px" : "48px"}
+        height={window.innerWidth < 640 ? "32px" : "48px"}
         svg={PreviousElement}
         onClick={handlePrevious}
+        className="sm:static absolute left-[50%] translate-x-[-85%] top-[100%]"
       />
-      <ul className="list-none w-[26.5rem] overflow-hidden p-0 pb-3">
+      {/* per visualizzare una card alla volta: ul w-[26.5rem] */}
+      <ul className="list-none w-[85vw] sm:w-[50vw] overflow-hidden p-0 pb-3">
         <div
           className={`flex items-center m-0 p-0 ${
             transitionEnabled ? "transition duration-1000" : ""
           }`}
           ref={wrapperRef}
           onTransitionEnd={setLoop}
-          style={{ transform: `translateX(-${100 * currentSlide}%)` }}
+          style={{
+            transform: `translateX(-${(100 * currentSlide) / cardNum}%)`,
+          }}
         >
-          {list[list.length - 1]}
+          {prevEls.map((el, i) => (
+            <span key={i}>{el}</span>
+          ))}
           {list}
-          {list[0]}
+          {nextEls.map((el, i) => (
+            <span key={i}>{el}</span>
+          ))}
         </div>
       </ul>
 
@@ -149,8 +170,9 @@ export default function Carousel({ elements, alternative }: Carousel) {
         label="Next Card"
         svg={NextElement}
         onClick={handleNext}
-        width={width < 540 && height > 840 ? "32px" : "48px"}
-        height={width < 540 && height > 840 ? "32px" : "48px"}
+        width={window.innerWidth < 640 ? "32px" : "48px"}
+        height={window.innerWidth < 640 ? "32px" : "48px"}
+        className="sm:static absolute right-[50%] translate-x-[85%] top-[100%]"
       />
     </div>
   );

@@ -7,11 +7,11 @@ const Home = forwardRef((_, ref: ForwardedRef<HTMLElement | null>) => {
   return (
     <Section id="home" ref={ref} topPadding={false}>
       <div className="relative w-full h-full flex items-center justify-center">
-        <img src={flame} alt="soul-errantis-flame" className="max-h-[90%]" />
+        <img src={flame} alt="soul-errantis-flame" className="max-h-screen" />
         <img
           src={logo}
           alt="soul-errantis-logo"
-          className="absolute z-10 w-3/4"
+          className="absolute z-10 w-3/4 max-h-screen"
         />
       </div>
     </Section>
