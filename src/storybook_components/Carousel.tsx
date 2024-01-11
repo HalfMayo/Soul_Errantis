@@ -17,6 +17,8 @@ interface Carousel {
   cardNum?: number;
 }
 
+//TODO: visualizzazione 3 card per schermi 2xl
+
 export default function Carousel({
   elements,
   alternative,

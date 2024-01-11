@@ -1,5 +1,7 @@
 import CardProps from "../interfaces/CardProps";
 
+//TODO: per schermi con h < 700 diminuire l'altezza della card
+
 export default function Card({
   img,
   altText,
@@ -12,7 +14,7 @@ export default function Card({
       <div className="w-full h-[85%] flex flex-col items-center">
         {img ? (
           <img
-            className="rounded-t-xl lg:w-3/4 w-4/6"
+            className="rounded-t-xl 2xl:w-2/4 lg:w-3/4 w-4/6"
             src={img}
             alt={altText}
           />
