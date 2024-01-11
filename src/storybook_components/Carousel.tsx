@@ -18,7 +18,11 @@ interface Carousel {
   alternative?: boolean;
 }
 
+const CARDSNUM = 2;
+
 export default function Carousel({ elements, alternative }: Carousel) {
+  const prevEls = [];
+  const nextEls = [];
   const width = window.innerWidth;
   const height = window.innerHeight;
   const [currentSlide, setCurrentSlide] = useState(1);
@@ -82,6 +86,14 @@ export default function Carousel({ elements, alternative }: Carousel) {
     }
   });
 
+  for (let i = 1; i <= list.length % CARDSNUM; i++) {
+    prevEls.push(list[list.length - 1]);
+  }
+
+  for (let i = 0; i <= CARDSNUM; i++) {
+    nextEls.push(list[i]);
+  }
+
   function handleNext() {
     if (!disabledButtons) {
       setCurrentSlide((prev) => prev + 1);
@@ -132,18 +144,25 @@ export default function Carousel({ elements, alternative }: Carousel) {
         svg={PreviousElement}
         onClick={handlePrevious}
       />
-      <ul className="list-none w-[26.5rem] overflow-hidden p-0 pb-3">
+      {/* per visualizzare una card alla volta: ul w-[26.5rem] */}
+      <ul className="list-none w-[50vw] overflow-hidden p-0 pb-3">
         <div
           className={`flex items-center m-0 p-0 ${
             transitionEnabled ? "transition duration-1000" : ""
           }`}
           ref={wrapperRef}
           onTransitionEnd={setLoop}
-          style={{ transform: `translateX(-${100 * currentSlide}%)` }}
+          style={{
+            transform: `translateX(-${(100 * currentSlide) / CARDSNUM}%)`,
+          }}
         >
-          {list[list.length - 1]}
+          {prevEls.map((el, i) => (
+            <span key={i}>{el}</span>
+          ))}
           {list}
-          {list[0]}
+          {nextEls.map((el, i) => (
+            <span key={i}>{el}</span>
+          ))}
         </div>
       </ul>
 

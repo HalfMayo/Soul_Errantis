@@ -36,6 +36,12 @@ const team = [{
         headline: "Hyper",
         subhead: "Lead 3D Modeler | Texture artist | Animator | Organic modeler",
         description: "I started playing videogames in 1998, and I still love it! Good background music is necessary for me in order to concentrate! My main skills are programming and joking in inappropriate moments. Here, 'To Make Good'"
+    },{
+        img: avatar,
+        altText: "Barb-chibi-avatar",
+        headline: "Barb",
+        subhead: "Lead 3D Modeler | Texture artist | Animator | Organic modeler",
+        description: "I started playing videogames in 1998, and I still love it! Good background music is necessary for me in order to concentrate! My main skills are programming and joking in inappropriate moments. Here, 'To Make Good'"
     }
 ]
 
