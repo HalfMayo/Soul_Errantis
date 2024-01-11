@@ -27,10 +27,10 @@ export default function FeatureElement({
           <Flame width="64px" height="64px" fill="#DEB074" />
         )}
         <p
-          className={`pt-4 border-t-accent border-t-2 sm:pt-0 sm:border-t-0 ${
+          className={`pt-4 border-t-accent border-t-2 text-center sm:pt-0 sm:border-t-0 ${
             rightAlign
               ? "sm:pr-4 sm:border-r-accent sm:border-r-2 sm:text-right"
-              : "sm:pl-4 sm:border-l-accent sm:border-l-2"
+              : "sm:pl-4 sm:border-l-accent sm:border-l-2 sm:text-left"
           }`}
         >
           {children}
