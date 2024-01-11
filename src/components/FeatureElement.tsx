@@ -13,23 +13,25 @@ export default function FeatureElement({
 }) {
   return (
     <div
-      className={`w-full flex ${
-        rightAlign ? "flex-row-reverse" : ""
+      className={`w-[85%] sm:w-full flex flex-col ${
+        rightAlign ? "sm:flex-row-reverse" : "sm:flex-row"
       } items-center justify-center gap-2`}
     >
-      <img className="w-2/5" src={ill} alt="chibi-scene-1" />
+      <img className="w-full sm:w-2/5" src={ill} alt="chibi-scene-1" />
       <div
-        className={`flex ${
-          rightAlign ? "flex-row-reverse" : ""
+        className={`flex flex-col  ${
+          rightAlign ? "sm:flex-row-reverse" : "sm:flex-row"
         } items-center justify-center gap-4`}
       >
-        <Flame width="64px" height="64px" fill="#DEB074" />
+        {window.innerWidth >= 640 && (
+          <Flame width="64px" height="64px" fill="#DEB074" />
+        )}
         <p
-          className={
+          className={`pt-4 border-t-accent border-t-2 sm:pt-0 sm:border-t-0 ${
             rightAlign
-              ? "pr-4 border-r-accent border-r-2 text-right"
-              : "pl-4 border-l-accent border-l-2"
-          }
+              ? "sm:pr-4 sm:border-r-accent sm:border-r-2 sm:text-right"
+              : "sm:pl-4 sm:border-l-accent sm:border-l-2"
+          }`}
         >
           {children}
         </p>

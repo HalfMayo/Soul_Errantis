@@ -8,14 +8,14 @@ export default function Card({
   description,
 }: CardProps) {
   return (
-    <div
-      className={`h-[600px] mx-[1vw] rounded-xl border-white border-2 flex items-center justify-center text-center ${
-        description ? "w-[23vw]" : "w-max max-w-sm"
-      }`}
-    >
-      <div className="w-full h-[87.5%] flex flex-col items-center">
+    <div className="h-[600px] mx-[1vw] rounded-xl border-white border-2 flex items-center justify-center text-center lg:w-[23vw] w-[48vw]">
+      <div className="w-full h-[85%] flex flex-col items-center">
         {img ? (
-          <img className="rounded-t-xl w-3/4" src={img} alt={altText} />
+          <img
+            className="rounded-t-xl lg:w-3/4 w-4/6"
+            src={img}
+            alt={altText}
+          />
         ) : (
           <></>
         )}

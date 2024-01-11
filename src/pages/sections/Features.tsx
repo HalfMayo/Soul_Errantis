@@ -7,7 +7,7 @@ import FeatureElement from "../../components/FeatureElement";
 const Features = forwardRef((_, ref: ForwardedRef<HTMLElement | null>) => {
   return (
     <Section id="features" ref={ref}>
-      <div className="w-3/5 flex flex-col items-center justify-center gap-14">
+      <div className="w-[90%] sm:w-3/5 flex flex-col items-center justify-center gap-14">
         <FeatureElement ill={illOne}>
           <>
             Vivamus fringilla condi - mentum dui sed feugiat. Sed non egestas

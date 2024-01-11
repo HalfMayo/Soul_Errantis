@@ -11,16 +11,17 @@ import PreviousElement from "../assets/svgs/left-chevron-svgrepo-com.svg?react";
 import NextElement from "../assets/svgs/right-chevron-svgrepo-com.svg?react";
 import CardImage from "./CardImage";
 
-//TODO: aumentare ampiezza carousel e modificare il comportamento (list.length/2)
-
 interface Carousel {
   elements: CardProps[] | ImageProps[] | AltImageProps[];
   alternative?: boolean;
+  cardNum?: number;
 }
 
-const CARDSNUM = 2;
-
-export default function Carousel({ elements, alternative }: Carousel) {
+export default function Carousel({
+  elements,
+  alternative,
+  cardNum = 2,
+}: Carousel) {
   const prevEls = [];
   const nextEls = [];
   const width = window.innerWidth;
@@ -86,11 +87,11 @@ export default function Carousel({ elements, alternative }: Carousel) {
     }
   });
 
-  for (let i = 1; i <= list.length % CARDSNUM; i++) {
+  for (let i = 1; i <= list.length % cardNum; i++) {
     prevEls.push(list[list.length - 1]);
   }
 
-  for (let i = 0; i <= CARDSNUM; i++) {
+  for (let i = 0; i <= cardNum; i++) {
     nextEls.push(list[i]);
   }
 
@@ -153,7 +154,7 @@ export default function Carousel({ elements, alternative }: Carousel) {
           ref={wrapperRef}
           onTransitionEnd={setLoop}
           style={{
-            transform: `translateX(-${(100 * currentSlide) / CARDSNUM}%)`,
+            transform: `translateX(-${(100 * currentSlide) / cardNum}%)`,
           }}
         >
           {prevEls.map((el, i) => (

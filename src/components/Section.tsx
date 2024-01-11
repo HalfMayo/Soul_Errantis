@@ -10,8 +10,8 @@ const Section = forwardRef(
       <section
         id={id}
         className={`${
-          topPadding ? "pt-[7.5vh]" : ""
-        } w-full h-screen flex flex-col items-center justify-center text-white`}
+          topPadding ? "sm:pt-[7.5vh]" : ""
+        } py-[10vh] sm:py-0 w-full min-h-screen flex flex-col items-center justify-center text-white`}
         ref={ref}
       >
         {children}
