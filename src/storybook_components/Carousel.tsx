@@ -29,6 +29,10 @@ export default function Carousel({
   const [disabledButtons, setDisabledButtons] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
+  if (window.innerWidth >= 1536) {
+    cardNum = 3;
+  }
+
   function isCard(el: CardProps | ImageProps | AltImageProps): el is CardProps {
     return (el as CardProps).headline !== undefined;
   }
@@ -144,7 +148,6 @@ export default function Carousel({
         onClick={handlePrevious}
         className="sm:static absolute left-[50%] translate-x-[-85%] top-[100%]"
       />
-      {/* per visualizzare una card alla volta: ul w-[26.5rem] */}
       <ul className="list-none w-[85vw] sm:w-[50vw] overflow-hidden p-0 pb-3">
         <div
           className={`flex items-center m-0 p-0 ${
